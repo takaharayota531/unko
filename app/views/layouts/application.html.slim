@@ -1,0 +1,43 @@
+doctype html
+html
+  head
+    title
+      | Bookers2
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  - if user_signed_in?
+    header
+      nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+        .container
+          a.navbar-brand[href="/"]
+            span
+              | Bookers
+          button.navbar-toggler[type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"]
+            span.navbar-toggler-icon
+          #navbarNavDropdown.collapse.navbar-collapse
+            ul.navbar-nav.ml-auto
+              li
+                a.fas.fa-home.nav-link.text-light
+                  = link_to "Home",user_path(current_user.id)
+              li
+                a.fas.fa-users.nav-link.text-light[href="/users"]
+                  |  Users
+              li
+                a.fas.fa-book-open.nav-link.text-light[href="/books"]
+                  |  Books
+              li
+                a.fas.fa-sign-out-alt.nav-link.text-light[rel="nofollow" data-method="delete" href="/users/sign_out"]
+                  |  logout
+    body
+
+  - else
+
+  = yield
+  footer
+    .container.mt-5
+      .row
+        .mx-auto
+          p
+            | CopyRight Infratop.inc

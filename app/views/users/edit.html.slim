@@ -1,0 +1,25 @@
+main
+  p#notice
+  .container
+    .row
+      .col-sm-12.col-md-8.col-lg-5.px-5.px-sm-0.mx-auto
+        h2
+          | User info
+        = form_with model:@user, local:true do |f|
+          label[for="inputName"]
+            | Name
+          = f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"
+          br
+          = attachment_image_tag @user, :profile_image,fallback: "no_image.jpg" , size: "100x100"
+          br
+          label[for="inputImage"]
+            | ProfileImage
+          br
+          = f.attachment_field :profile_image, placeholder: "プロフィール画像"
+          br
+          label[for="inputIntroduction"]
+            | Introduction
+          br
+          = f.text_area :introduction,autofocus: true
+          br
+          = f.submit "Update User"

@@ -1,0 +1,34 @@
+- if flash[:notice]
+  p
+    = flash[:notice]
+- if flash[:alert]
+  p
+    = flash[:alert]
+main
+  p#notice
+  .container
+    .row
+      .mx-auto.col-11.col-sm-10.col-lg-8.col-xl-6
+        h1
+          | welcome to 
+          i.fas.fa-book
+          strong
+            | Bookers
+          |  !!
+        p
+          | In 
+          i.fas.fa-book
+          strong
+            | Bookers
+          | , 
+        p
+          | you can share and exchange your opinions , inpressions , and emotions
+        p
+          |  about various books!
+        .btn-wrapper.col-10.mx-auto
+          .row
+            a.btn.btn-info.btn-sm.btn-block.mb-3.sign_in[href="/users/sign_in"]
+              | Log in
+          .row
+            a.btn.btn-success.btn-sm.btn-block.sign_up[href="/users/sign_up"]
+              | Sign Up

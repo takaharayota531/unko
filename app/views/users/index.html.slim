@@ -1,0 +1,28 @@
+body
+  main
+    p#notice
+    .container.px-5.px-sm-0
+      .row
+        =render 'books/list', book:@book,user:@user
+        .col-md-8.offset-md-1
+          h2
+            | Users
+          table.table.table-hover.table-inverse
+            thead
+              tr
+                th
+                th
+                  | image
+                th
+                  | name
+                th[colspan="3"]
+
+            tbody
+              - @users.each do |f|
+                div
+                  = attachment_image_tag @user, :profile_image
+                  p
+                    = link_to  "Show",user_path(f.id)
+                  p
+                    | ユーザ：
+                    = f.name

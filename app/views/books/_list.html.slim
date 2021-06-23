@@ -1,0 +1,27 @@
+.col-md-3
+  h2
+    | User info
+  .profile-container
+    = attachment_image_tag user, :profile_image, fallback: "no_image.jpg", size: "100x100"
+    h3.profile-name
+      = user.name
+    h3
+      | introduction
+    h4
+      = user.introduction
+    .row
+      - if user.id == current_user.id
+        p
+          = link_to "プロフィール編集", edit_user_path(user)
+  tbody
+    tr
+  h2
+    | New Book
+  = form_with model: book, local:true do |f|
+    h4
+      | Title
+    = f.text_field :title
+    h4
+      | Opinion
+    = f.text_area :body
+    = f.submit '投稿'
